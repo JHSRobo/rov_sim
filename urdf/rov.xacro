@@ -40,11 +40,6 @@
   <link name="base_link">
   </link>
 
-  <!--<joint name="MEH_Crossbar_axis" type="fixed">
-    <parent link="MEH_Crossbar"/>
-    <child link="axis"/>
-  </joint>-->
-
   <!-- Upper Frame Definition -->
 
   <link name="MEH_Crossbar">
