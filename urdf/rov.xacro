@@ -36,26 +36,14 @@
     <color rgba="0.9 0.1 0.1 1"/>
   </material>
 
-  <!-- MEH -->
-
+  <!-- Base Link and Axis -->
   <link name="base_link">
-    <visual>
-      <geometry>
-        <box size="0.16 0.11 0.16"/>
-      </geometry>
-      <origin xyz="0 -0.055 0.04"/>
-      <material name="beige"/>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.16 0.11 0.16"/>
-      </geometry>
-      <origin xyz="0 -0.055 0.04"/>
-    </collision>
-    <xacro:inertial_box mass="0.8" x="0.16" y="0.11" z="0.16">
-      <origin xyz="0 -0.055 0.04" rpy="0 0 0"/>
-    </xacro:inertial_box>
   </link>
+
+  <!--<joint name="MEH_Crossbar_axis" type="fixed">
+    <parent link="MEH_Crossbar"/>
+    <child link="axis"/>
+  </joint>-->
 
   <!-- Upper Frame Definition -->
 
@@ -75,8 +63,8 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:inertial_box>
   </link>
-  
-  <joint name="MEH_Crossbar_to_MEH" type="fixed">
+
+  <joint name="Base_Link_MEH_Crossbar" type="fixed">
     <parent link="base_link"/>
     <child link="MEH_Crossbar"/>
   </joint>
@@ -321,7 +309,31 @@
     <origin xyz="0 ${depth - 0.08} 0"/>
   </joint>
 
-  <!-- PSE and Static Buoyancy -->
+  <!-- Housings and Static Buoyancy -->
+
+  <link name="MEH">
+    <visual>
+      <geometry>
+        <box size="0.16 0.11 0.16"/>
+      </geometry>
+      <origin xyz="0 -0.055 0.04"/>
+      <material name="beige"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.16 0.11 0.16"/>
+      </geometry>
+      <origin xyz="0 -0.055 0.04"/>
+    </collision>
+    <xacro:inertial_box mass="0.8" x="0.16" y="0.11" z="0.16">
+      <origin xyz="0 -0.055 0.04" rpy="0 0 0"/>
+    </xacro:inertial_box>
+  </link>
+
+  <joint name="MEH_Crossbar_to_MEH" type="fixed">
+    <parent link="MEH_Crossbar"/>
+    <child link="MEH"/>
+  </joint>
 
   <link name="PSE">
     <visual>

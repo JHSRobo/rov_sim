@@ -28,27 +28,13 @@
   <material name="red">
     <color rgba="0.9 0.1 0.1 1"/>
   </material>
-  <!-- MEH -->
+  <!-- Base Link and Axis -->
   <link name="base_link">
-    <visual>
-      <geometry>
-        <box size="0.16 0.11 0.16"/>
-      </geometry>
-      <origin xyz="0 -0.055 0.04"/>
-      <material name="beige"/>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.16 0.11 0.16"/>
-      </geometry>
-      <origin xyz="0 -0.055 0.04"/>
-    </collision>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 -0.055 0.04"/>
-      <mass value="0.8"/>
-      <inertia ixx="0.002513333333333333" ixy="0.0" ixz="0.0" iyy="0.0034133333333333333" iyz="0.0" izz="0.002513333333333333"/>
-    </inertial>
   </link>
+  <!--<joint name="MEH_Crossbar_axis" type="fixed">
+    <parent link="MEH_Crossbar"/>
+    <child link="axis"/>
+  </joint>-->
   <!-- Upper Frame Definition -->
   <link name="MEH_Crossbar">
     <visual>
@@ -68,7 +54,7 @@
       <inertia ixx="4.717499999999999e-06" ixy="0.0" ixz="0.0" iyy="0.0014375270833333331" iyz="0.0" izz="0.0014375270833333331"/>
     </inertial>
   </link>
-  <joint name="MEH_Crossbar_to_MEH" type="fixed">
+  <joint name="Base_Link_MEH_Crossbar" type="fixed">
     <parent link="base_link"/>
     <child link="MEH_Crossbar"/>
   </joint>
@@ -353,7 +339,31 @@
     <child link="Lower_Back_Crossbar"/>
     <origin xyz="0 0.32999999999999996 0"/>
   </joint>
-  <!-- PSE and Static Buoyancy -->
+  <!-- Housings and Static Buoyancy -->
+  <link name="MEH">
+    <visual>
+      <geometry>
+        <box size="0.16 0.11 0.16"/>
+      </geometry>
+      <origin xyz="0 -0.055 0.04"/>
+      <material name="beige"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.16 0.11 0.16"/>
+      </geometry>
+      <origin xyz="0 -0.055 0.04"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 -0.055 0.04"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.002513333333333333" ixy="0.0" ixz="0.0" iyy="0.0034133333333333333" iyz="0.0" izz="0.002513333333333333"/>
+    </inertial>
+  </link>
+  <joint name="MEH_Crossbar_to_MEH" type="fixed">
+    <parent link="MEH_Crossbar"/>
+    <child link="MEH"/>
+  </joint>
   <link name="PSE">
     <visual>
       <geometry>
