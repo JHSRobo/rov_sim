@@ -8,26 +8,7 @@
      after a couple of commands. It's used to simulate the ROV with ROS. -->
   <!-- Specify some standard inertial calculations https://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
   <!-- These make use of xacro's mathematical functionality -->
-  <!-- Xacro Properties Definition -->
-  <!-- Materials definition -->
-  <material name="silver">
-    <color rgba="0.6 0.6 0.6 1"/>
-  </material>
-  <material name="dark_gray">
-    <color rgba="0.3 0.3 0.3 1"/>
-  </material>
-  <material name="white">
-    <color rgba="1 1 1 1"/>
-  </material>
-  <material name="black">
-    <color rgba="0 0 0 1"/>
-  </material>
-  <material name="beige">
-    <color rgba="0.88 0.8 0.6 1"/>
-  </material>
-  <material name="red">
-    <color rgba="0.9 0.1 0.1 1"/>
-  </material>
+
   <!-- Base Link and Axis -->
   <link name="base_link">
   </link>

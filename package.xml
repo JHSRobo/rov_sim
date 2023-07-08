@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+<!-- This file lists dependencies. You can find the keys for packages here:
+     ROS Packages: https://github.com/ros/rosdistro/blob/master/humble/distribution.yaml
+     apt Packages: https://github.com/ros/rosdistro/blob/master/rosdep/base.yaml 
+     Python Packages: https://github.com/ros/rosdistro/blob/master/rosdep/python.yaml-->
+
 <package format="3">
   <name>rov_sim</name>
   <version>0.0.0</version>
@@ -15,7 +21,7 @@
   <depend>rclpy</depend>
   <depend>core</depend>
   <depend>joint_state_publisher_gui</depend>
-  <depend>ros-ign-bridge</depend>
+  <depend>ros_gz</depend>
 
   <export>
     <build_type>ament_python</build_type>
