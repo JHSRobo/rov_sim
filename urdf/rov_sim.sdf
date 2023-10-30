@@ -1,0 +1,110 @@
+<sdf version='1.9'>
+  <world name='orca_sim'>
+    <scene>
+      <ambient>0 1 1 1</ambient>
+      <background>0 0.7 0.8 1</background>
+      <shadows>false</shadows>
+    </scene>
+
+    <!-- Set up simulation physics and resolution -->
+    <physics name='1ms' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- Include appropriate plugins -->
+    <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
+    <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
+    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='ignition-gazebo-scene-broadcaster-system'/>
+    <plugin name='ignition::gazebo::systems::Buoyancy' filename='ignition-gazebo-buoyancy-system'>
+      <uniform_fluid_density>1000</uniform_fluid_density>
+    </plugin>
+
+    <!-- Important World Information -->
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    
+    <!-- Add Lighting to the World -->
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 -0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.1 -0.9</direction>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.01</linear>
+        <constant>0.90000000000000002</constant>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+
+    <!-- This is the pool environment. Uncomment it to load
+        a pool mockup into Gazebo. Impacts performace badly. -->
+
+    <model name="pool">
+      <static>true</static>
+      <link name="pool_link">
+      <collision name="pool_collision">
+        <geometry>
+        <mesh>
+          <uri>pool.dae</uri>
+        </mesh>
+        </geometry>
+      </collision>
+      <visual name="pool_visual">
+        <cast_shadows>true</cast_shadows>
+        <geometry>
+        <mesh>
+          <uri>pool.dae</uri>
+        </mesh>
+        </geometry>
+      </visual>
+      </link>
+    </model>
+
+  <!-- Add the ROV Model -->
+  <model name='rov'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <mass>13.8</mass>
+        <inertia>
+          <ixx>0.220915</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.220915</iyy>
+          <iyz>0</iyz>
+          <izz>0.29808</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0.04 0 0.2 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.45 0.4</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0.04 0.06 0 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///home/jhsrobo/corews/install/rov_sim/share/rov_sim/rov.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+  </world>
+</sdf>

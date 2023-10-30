@@ -14,7 +14,10 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))),
-        (os.path.join('share', package_name), glob('urdf/*')),
+        (os.path.join('share', package_name), glob('urdf/rov.urdf.xml')),
+        (os.path.join('share', package_name), glob('urdf/rov_sim.sdf')),
+        (os.path.join('share', package_name), glob('urdf/pool.dae')),
+        (os.path.join('share', package_name), glob('urdf/rov/*'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,

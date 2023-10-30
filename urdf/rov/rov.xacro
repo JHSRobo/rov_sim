@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rov">
+  
+  <!-- includes -->
+  <xacro:include filename="rov_base.xacro"/>
+
+  <xacro:rov_base
+  
+    inertial_reference_frame="base_link"> 
+    <gazebo></gazebo>
+
+  </xacro:rov_base>
+
+</robot>
